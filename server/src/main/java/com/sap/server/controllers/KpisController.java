@@ -25,9 +25,59 @@ public class KpisController {
                                                       @RequestParam String endDate) throws JCoException {
         JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI1",startDate, endDate);
         List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
-
         return ResponseEntity.ok(dataList);
-        //return kpi1Service.getKpi1(startDate,endDate);
+    }
+
+    @GetMapping("/getKpi2")
+    ResponseEntity<List<Map<String, Object>>> getKpi2(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI2",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
+    }
+
+    @GetMapping("/getKpi3")
+    ResponseEntity<List<Map<String, Object>>> getKpi3(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI3",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
+    }
+    @GetMapping("/getKpi4")
+    ResponseEntity<List<Map<String, Object>>> getKpi4(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI4",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
+    }
+    @GetMapping("/getKpi5")
+    ResponseEntity<List<Map<String, Object>>> getKpi5(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI5",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
+    }
+    @GetMapping("/getKpi6")
+    ResponseEntity<List<Map<String, Object>>> getKpi6(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI6",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
+    }
+    @GetMapping("/getKpi7")
+    ResponseEntity<List<Map<String, Object>>> getKpi7(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI7",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
+    }
+
+    @GetMapping("/getKpi8")
+    ResponseEntity<List<Map<String, Object>>> getKpi8(@RequestParam String startDate,
+                                                      @RequestParam String endDate) throws JCoException {
+        JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI8",startDate, endDate);
+        List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
+        return ResponseEntity.ok(dataList);
     }
 
 }
