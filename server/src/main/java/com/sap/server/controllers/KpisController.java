@@ -4,9 +4,11 @@ package com.sap.server.controllers;
 import com.sap.conn.jco.JCoException;
 import com.sap.conn.jco.JCoTable;
 import com.sap.server.services.IKpisService;
+import com.sap.server.services.JwtService;
 import com.sap.server.shared.Utility;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -79,5 +81,7 @@ public class KpisController {
         List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
         return ResponseEntity.ok(dataList);
     }
+
+
 
 }

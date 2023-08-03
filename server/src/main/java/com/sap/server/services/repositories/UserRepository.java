@@ -1,4 +1,4 @@
-package com.sap.server.repositories;
+package com.sap.server.services.repositories;
 
 import com.sap.server.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
