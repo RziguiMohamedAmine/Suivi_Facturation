@@ -3,6 +3,7 @@ package com.sap.server.controllers;
 
 import com.sap.conn.jco.JCoException;
 import com.sap.conn.jco.JCoTable;
+import com.sap.server.auth.AuthenticationService;
 import com.sap.server.services.IKpisService;
 import com.sap.server.services.JwtService;
 import com.sap.server.shared.Utility;
@@ -22,12 +23,18 @@ public class KpisController {
 
     Utility util ;
     IKpisService kpisService;
+    //@CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getKpi1")
     ResponseEntity<List<Map<String, Object>>> getKpi1(@RequestParam String startDate,
                                                       @RequestParam String endDate) throws JCoException {
         JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI1",startDate, endDate);
         List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
         return ResponseEntity.ok(dataList);
+    }
+    private final AuthenticationService authenticationService;
+    @GetMapping("/session/{token}")
+    public ResponseEntity<UserDetails> getUserFromToken(@PathVariable String token) {
+        return authenticationService.getUserFromToken(token);
     }
 
     @GetMapping("/getKpi2")

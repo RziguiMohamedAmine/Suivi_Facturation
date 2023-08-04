@@ -29,10 +29,10 @@ public class AuthenticationController {
     }
 
 
-    @GetMapping("/session/{token}")
+/*    @GetMapping("/session/{token}")
     public ResponseEntity<UserDetails> getUserFromToken(@PathVariable String token) {
         return authenticationService.getUserFromToken(token);
-    }
+    }*/
 
 
 }

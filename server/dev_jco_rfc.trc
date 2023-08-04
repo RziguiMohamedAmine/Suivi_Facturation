@@ -1,0 +1,324 @@
+
+**** Error file opened at 20230804 154057 West Africa Standard Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Fri Aug 04 15:40:57,917<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 78086682
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 15:40:57 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:58775
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     4
+
+<RfcGetException
+
+Error: [1] >Fri Aug 04 15:40:57,946<    RfcException raised by system [IB1|karen]:
+    message: CPIC-CALL: CMRCV on convId: 78086682
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 15:40:57 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:58775
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     4
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 16:33:07,317<    RfcException:
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_BACK ASHOST=karen.iliadeconsulting.com SYSNR=00 SAPROUTER=/H/sap.iliadeconsulting.com/S/3299 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner 'sap.iliadeconsulting.com:3299' not reached
+TIME        Fri Aug 04 16:33:07 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nixxi.cpp
+LINE        3283
+DETAIL      NiPConnect2: 80.124.65.100:3299
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     4
+
+    return code: RFC_FAILURE (1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 16:33:28,397<    RfcException:
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_BACK ASHOST=karen.iliadeconsulting.com SYSNR=00 SAPROUTER=/H/sap.iliadeconsulting.com/S/3299 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner 'sap.iliadeconsulting.com:3299' not reached
+TIME        Fri Aug 04 16:33:28 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nixxi.cpp
+LINE        3283
+DETAIL      NiPConnect2: 80.124.65.100:3299
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     4
+
+    return code: RFC_FAILURE (1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 16:34:11,214<    RfcException:
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_BACK ASHOST=karen.iliadeconsulting.com SYSNR=00 SAPROUTER=/H/sap.iliadeconsulting.com/S/3299 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner 'sap.iliadeconsulting.com:3299' not reached
+TIME        Fri Aug 04 16:34:11 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nixxi.cpp
+LINE        3283
+DETAIL      NiPConnect2: 80.124.65.100:3299
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    return code: RFC_FAILURE (1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 16:34:51,013<    RfcException:
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_BACK ASHOST=karen.iliadeconsulting.com SYSNR=00 SAPROUTER=/H/sap.iliadeconsulting.com/S/3299 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner 'sap.iliadeconsulting.com:3299' not reached
+TIME        Fri Aug 04 16:34:51 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nixxi.cpp
+LINE        3283
+DETAIL      NiPConnect2: 80.124.65.100:3299
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    return code: RFC_FAILURE (1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 16:54:20,041<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 82451587
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 16:54:20 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:57435
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+<RfcGetException
+
+Error: [1] >Fri Aug 04 16:54:20,042<    RfcException raised by system [IB1|karen]:
+    message: CPIC-CALL: CMRCV on convId: 82451587
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 16:54:20 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:57435
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20230804 171418 West Africa Standard Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Fri Aug 04 17:14:18,970<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 84427290
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:14:18 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:52668
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+<RfcGetException
+
+Error: [1] >Fri Aug 04 17:14:18,979<    RfcException raised by system [IB1|karen]:
+    message: CPIC-CALL: CMRCV on convId: 84427290
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:14:18 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:52668
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 17:16:50,228<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 84431115
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:16:50 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:52670
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+<RfcGetException
+
+Error: [2] >Fri Aug 04 17:16:50,229<    RfcException raised by system [IB1|karen]:
+    message: CPIC-CALL: CMRCV on convId: 84431115
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:16:50 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:52670
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20230804 174029 West Africa Standard Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Fri Aug 04 17:40:29,215<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 86070419
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:40:29 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:61655
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+<RfcGetException
+
+Error: [2] >Fri Aug 04 17:40:29,226<    RfcException raised by system [IB1|karen]:
+    message: CPIC-CALL: CMRCV on convId: 86070419
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:40:29 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:61655
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Fri Aug 04 17:40:47,396<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 86067359
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:40:47 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:61653
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+<RfcGetException
+
+Error: [1] >Fri Aug 04 17:40:47,397<    RfcException raised by system [IB1|karen]:
+    message: CPIC-CALL: CMRCV on convId: 86067359
+
+ERROR       connection to partner 'sap.iliadeconsulting.com:3299' broken
+TIME        Fri Aug 04 17:40:47 2023
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        5082
+DETAIL      NiIRead: P=80.124.65.100:3299; L=192.168.181.91:61653
+SYSTEM CALL recv
+ERRNO       10054
+ERRNO TEXT  WSAECONNRESET: Connection reset by peer
+COUNTER     3
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
