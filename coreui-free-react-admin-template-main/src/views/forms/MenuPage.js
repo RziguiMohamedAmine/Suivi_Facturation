@@ -121,12 +121,14 @@ const MenuPage = () => { // const url = "https://nextec-back.vercel.app/";
     return (
         <div> {
             !dataFetched ? (
+              <div>
+                <h1 style={{ textAlign: 'start' }}>Your Big Title</h1>
                 <CForm className="row g-3"
                     onSubmit={handleSubmit}>
                     <CCol md={7}>
                         <CFormLabel htmlFor="startdate">Start Date</CFormLabel>
                         <CFormInput type="date"
-                            value={startDate}
+                            value={startDate}                
                             id="startdate"
                             onChange={handleStartDateChange}/>
                     </CCol>
@@ -156,6 +158,7 @@ const MenuPage = () => { // const url = "https://nextec-back.vercel.app/";
                         <CButton type="submit">Submit</CButton>
                     </CCol>
                 </CForm>
+              </div>
             ) : (
                 <DataTable kpiData={kpiData}
                     bapi={bapi}/>

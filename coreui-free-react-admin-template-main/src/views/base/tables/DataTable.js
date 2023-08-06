@@ -8,8 +8,16 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
+  CButton,
+  CModal,
+  CModalHeader,
+  CModalTitle,
+  CModalBody,
+  CModalFooter,
 } from '@coreui/react'
 import { PropTypes } from 'prop-types';
+import { DocsExample } from 'src/components';
+import { CChartPie } from '@coreui/react-chartjs';
 
 const fieldsConfigurations = {
   fields1 : [
@@ -95,9 +103,57 @@ const DataTable = ( { kpiData, bapi }  ) =>{
 const selectedFields = fieldsConfigurations[bapi] || [];
 
 
+
+
+const VerticallyCentered = () => {
+  const [visible, setVisible] = useState(false)
   return (
-  <div>
+    <>
+   <div className="mt-4 mb-4 d-flex justify-content-end "> {/* Add the 'd-inline-block' class to make the button behave like inline-block */}
+   
+        <CButton onClick={() => setVisible(!visible)}>Pie Chart</CButton>
+      </div>
+     
+      <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
+        <CModalHeader>
+          <CModalTitle>Modal title</CModalTitle>
+        </CModalHeader>
+        <CModalBody>
+        <CChartPie
+              data={{
+                labels: ['Red', 'Green', 'Yellow'],
+                datasets: [
+                  {
+                    data: [300, 50, 100],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                  },
+                ],
+              }}
+            />
+        </CModalBody>
+        <CModalFooter>
+          <CButton color="secondary" onClick={() => setVisible(false)}>
+            Close
+          </CButton>
+          <CButton color="primary">Save changes</CButton>
+        </CModalFooter>
+      </CModal>
+    </>
+  )
+}
+
+
+
+
+
+
+  return (
+  <div className="text-center">
     <h1 style={{ textAlign: 'center' }}>Your Big Title</h1>
+    
+              {VerticallyCentered()}
+         
       <CTable hover style={selectedFields ==='fields1' ? {marginLeft : '100px'} :{marginLeft : '25px'} }
           columnFilter tableFilter itemsPerPageSelect itemsPerPage={5} pagination
         >           
