@@ -28,10 +28,11 @@ const MenuPage = () => { // const url = "https://nextec-back.vercel.app/";
         return `${day}.${month}.${year}`;
     };
     const token = localStorage.getItem("token");
+    const formattedStartDate = formatDate(startDate);
+    const formattedEndDate = formatDate(endDate);
     const fetchData = async () => {
         try {
-            const formattedStartDate = formatDate(startDate);
-            const formattedEndDate = formatDate(endDate);
+            
             console.log(formattedStartDate)
             let response1;
             let response2;
@@ -161,7 +162,7 @@ const MenuPage = () => { // const url = "https://nextec-back.vercel.app/";
               </div>
             ) : (
                 <DataTable kpiData={kpiData}
-                    bapi={bapi}/>
+                    bapi={bapi} startdate={formattedStartDate} enddate={formattedEndDate} />
             )
         } </div>
     )

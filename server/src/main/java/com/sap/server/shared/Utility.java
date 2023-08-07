@@ -47,7 +47,14 @@ public Date ConvertDate(String dateString){
     }
 
 
-
+//    private ADR6_SMTP_ADDR toSAPSmtpAddress(String email) {
+//        ADR6_SMTP_ADDR sapAddress = new ADR6_SMTP_ADDR();
+//        String[] parts = email.split("@");
+//        sapAddress.setSMTP_ADDR(parts[0]);
+//        sapAddress.setDOMAIN(parts[1]);
+//        // Set other fields if needed
+//        return sapAddress;
+//    }
 
 
 

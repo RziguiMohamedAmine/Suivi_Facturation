@@ -44,4 +44,50 @@ public class KpisService implements IKpisService {
 
         return table;
     }
+
+    @Override
+    public boolean sendEmail(String startDate,String endDate,String senderEmail,String recipientEmail) {
+        try {
+            Utility u = new Utility();
+            JCoDestination destination = JCoDestinationManager.getDestination("ABAP_BACK");
+            JCoFunction function = destination.getRepository().getFunction("ZBAPI_MAIL"); // Replace "BAPI_NAME" with the name of your BAPI
+
+            if (function == null) {
+                throw new RuntimeException("ZBAPI_KPI1 Not Found");
+            }
+
+            JCoParameterList importParams = function.getImportParameterList();
+            JCoStructure dateStruct = importParams.getStructure("DATE_ST");
+            JCoStructure dateStruct2 = importParams.getStructure("DATE_EN");
+
+
+            Date dateStart = u.ConvertDate(startDate);
+            Date dateEnd = u.ConvertDate(endDate);
+
+            dateStruct.setValue("LV_DATE", dateStart);
+            dateStruct2.setValue("LV_DATE", dateEnd);
+            // Set input parameters for your BAPI
+            function.getImportParameterList().setValue("MAIL", recipientEmail);
+            function.getImportParameterList().setValue("MAILSEND", senderEmail);
+
+            // Call the BAPI
+            function.execute(destination);
+
+            return true;
+        } catch (JCoException e) {
+            // Handle JCo exceptions
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }

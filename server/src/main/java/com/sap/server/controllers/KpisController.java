@@ -4,10 +4,12 @@ package com.sap.server.controllers;
 import com.sap.conn.jco.JCoException;
 import com.sap.conn.jco.JCoTable;
 import com.sap.server.auth.AuthenticationService;
+import com.sap.server.entities.EmailRequest;
 import com.sap.server.services.IKpisService;
 import com.sap.server.services.JwtService;
 import com.sap.server.shared.Utility;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +89,22 @@ public class KpisController {
         JCoTable jcoTable = kpisService.getKpi1("ZBAPI_KPI8",startDate, endDate);
         List<Map<String, Object>> dataList = util.convertJCoTableToMapList(jcoTable);
         return ResponseEntity.ok(dataList);
+    }
+
+    @PostMapping("/sendmail")
+    ResponseEntity<String> sendMail(@RequestParam String startDate,
+                                                      @RequestParam String endDate,
+                                                       @RequestBody EmailRequest emailRequest) throws JCoException {
+        String recipientEmail = emailRequest.getRecipientEmail();
+        String senderEmail = emailRequest.getSenderEmail();
+
+        // Call the EmailService to send the email using the BAPI
+        if(kpisService.sendEmail(startDate,endDate, senderEmail,recipientEmail)){
+            return ResponseEntity.ok("Email sent successfully");
+    } else {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to send email");
+    }
+
     }
 
 

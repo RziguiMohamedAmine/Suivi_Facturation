@@ -33,6 +33,7 @@ const FormControl = React.lazy(() => import('./views/forms/form-control/FormCont
 const InputGroup = React.lazy(() => import('./views/forms/input-group/InputGroup'))
 const Layout = React.lazy(() => import('./views/forms/layout/Layout'))
 const MenuPage = React.lazy(() => import('./views/forms/MenuPage'))
+const MailPage = React.lazy(() => import('./views/forms/MailPage'))
 const Range = React.lazy(() => import('./views/forms/range/Range'))
 const Select = React.lazy(() => import('./views/forms/select/Select'))
 const Validation = React.lazy(() => import('./views/forms/validation/Validation'))
@@ -88,6 +89,8 @@ const routes = [
   { path: '/forms/floating-labels', name: 'Floating Labels', element: FloatingLabels },
   { path: '/forms/layout', name: 'Layout', element: Layout },
   { path: '/forms/MenuPage', name: 'MenuPage', element: MenuPage },
+  { path: '/forms/MailPage/:startdate/:enddate', name: 'MailPage', element: MailPage },
+  
   { path: '/forms/validation', name: 'Validation', element: Validation },
   { path: '/icons', exact: true, name: 'Icons', element: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', element: CoreUIIcons },

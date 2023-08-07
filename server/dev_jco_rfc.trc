@@ -322,3 +322,24 @@ COUNTER     3
     return code: RFC_SYS_EXCEPTION (3)
     error group: 102
     key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20230807 123917 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Mon Aug 07 12:39:17,227<    >RfcGetException rc (7) message: An exception has occurred that was not caught.
+<RfcGetException
+
+
+**** Error file opened at 20230807 124822 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Mon Aug 07 12:48:22,999<    >RfcGetException rc (7) message: An exception has occurred that was not caught.
+<RfcGetException
+
+
+**** Error file opened at 20230807 173005 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Mon Aug 07 17:30:05,328<    >RfcGetException rc (7) message: An exception has occurred that was not caught.
+<RfcGetException
+
+Error:  >Mon Aug 07 17:30:24,208<    >RfcGetException rc (7) message: An exception has occurred that was not caught.
+<RfcGetException
+
+Error:  >Mon Aug 07 17:32:54,402<    >RfcGetException rc (7) message: An exception has occurred that was not caught.
+<RfcGetException
+
