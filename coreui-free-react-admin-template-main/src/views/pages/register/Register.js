@@ -64,14 +64,14 @@ const Register = () => {
             <CCard className="mx-4">
               <CCardBody className="p-4">
                 <CForm onSubmit={addUser}>
-                  <h1>Register</h1>
-                  <p className="text-medium-emphasis">Create your account</p>
+                  <h1>Inscription</h1>
+                  <p className="text-medium-emphasis">Créez votre compte</p>
 
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
-                    <CFormInput placeholder="Firstname" type='text' 
+                    <CFormInput placeholder="Nom" type='text' 
                     name="firstname"
                     value={user.firstname}
                     onChange={handleFormInput} 
@@ -83,7 +83,7 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
-                    <CFormInput placeholder="Lastname" autoComplete="lastname" type='text' name="lastname"
+                    <CFormInput placeholder="Prénom" autoComplete="lastname" type='text' name="lastname"
                     value={user.lastname}
                     onChange={handleFormInput}
                     required
@@ -109,7 +109,7 @@ const Register = () => {
                     </CInputGroupText>
                     <CFormInput
                       type="password"
-                      placeholder="Password"
+                      placeholder="Mot de passe"
                       autoComplete="new-password"
                       name="password"
                       value={user.password}
@@ -124,7 +124,7 @@ const Register = () => {
                     </CInputGroupText>
                     <CFormInput
                       type="password"
-                      placeholder="Repeat password"
+                      placeholder="Confirmer mot de passe"
                       autoComplete="new-password"
                       name="confirmPassword"
                     />
@@ -164,7 +164,7 @@ const Register = () => {
                     )}
                   </div>
                   <div className="d-grid">
-                    <CButton type='submit' color="primary">Create Account</CButton>
+                    <CButton type='submit' color="primary">S’inscrire</CButton>
                   </div>
                 </CForm>
               </CCardBody>

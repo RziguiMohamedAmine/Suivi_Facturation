@@ -14,77 +14,139 @@ import {
   CModalTitle,
   CModalBody,
   CModalFooter,
-  CLink,
 } from '@coreui/react'
 import { PropTypes } from 'prop-types';
-import { DocsExample } from 'src/components';
+
 import { CChartPie } from '@coreui/react-chartjs';
 import { Link } from 'react-router-dom';
+import { getURL } from 'src/utils/getURL';
+import axios from 'axios';
+
+
+const titles = {
+  fields1: [{ title: 'Contrats attendus pour la facturation' }],
+  fields2: [{ title: 'Contrats déjà facturés' }],
+  fields3: [{ title: 'Contrats facturés avec relèves non cycliques' }],
+  fields4: [{ title: 'Contrats avec document de calcul de facturation sans facture' }],
+  fields5: [{ title: 'Contrats ayant des factures bloquées' }],
+  fields6: [{ title: 'Contrats bloqués pour le calcul facturation' }],
+  fields7: [{ title: 'Contrats ayant des OCF avec des relèves déjà saisies ' }],
+}
 
 const fieldsConfigurations = {
   fields1: [
-    { key: 'BUKRS', label: 'Class', _style: { width: '40%' } },
-    { key: 'VERTRAG', label: 'Contract', _style: { width: '20%' } },
-    { key: 'VBEZ', label: 'Heading1', _style: { width: '20%' } },
-    { key: 'VBEGINN', label: 'Heading2', _style: { width: '20%' } },
-    { key: 'VENDE', label: 'Heading3', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
+    { key: 'VBEZ', label: 'Contrat : texte', _style: { width: '20%' } },
+    { key: 'VBEGINN', label: 'Début du contrat', _style: { width: '20%' } },
+    { key: 'VENDE', label: 'Fin du contrat', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
 
   fields2: [
-    { key: 'PARTNER', label: 'PARTNER', _style: { width: '40%' } },
-    { key: 'FAEDS', label: 'FAEDS', _style: { width: '20%' } },
-    { key: 'VERTRAG', label: 'VERTRAG', _style: { width: '20%' } },
-    { key: 'OPBEL', label: 'OPBEL', _style: { width: '20%' } },
-    { key: 'BUDAT', label: 'BUDAT', _style: { width: '20%' } },
-    { key: 'FAEDN', label: 'FAEDN', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'PARTNER', label: 'Numéro de partenaire', _style: { width: '40%' } },
+    { key: 'FAEDS', label: 'Date échéance escompte', _style: { width: '20%' } },
+    { key: 'OPBEL', label: 'Numéro document d impression', _style: { width: '20%' } },
+    { key: 'BUDAT', label: 'Date comptable de la pièce', _style: { width: '20%' } },
+    { key: 'FAEDN', label: 'Date échéance nette', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
 
   fields3: [
-    { key: 'BUKRS', label: 'Class', _style: { width: '40%' } },
-    { key: 'ABLESGR', label: 'ABLESGR', _style: { width: '20%' } },
-    { key: 'VERTRAG', label: 'VERTRAG', _style: { width: '20%' } },
-    { key: 'ANLAGE', label: 'ANLAGE', _style: { width: '20%' } },
-    { key: 'BUDAT', label: 'BUDAT', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
+    { key: 'ABLESGR', label: 'Motif de relevé', _style: { width: '20%' } },
+    { key: 'ANLAGE', label: 'Installation', _style: { width: '20%' } },
+    { key: 'BUDAT', label: 'Date comptable de la pièce', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
   fields4: [
-    { key: 'BUKRS', label: 'Class', _style: { width: '40%' } },
-    { key: 'BEGABRPE', label: 'BEGABRPE', _style: { width: '20%' } },
-    { key: 'VERTRAG', label: 'VERTRAG', _style: { width: '20%' } },
-    { key: 'ENDABRPE', label: 'ENDABRPE', _style: { width: '20%' } },
-    { key: 'BELNR', label: 'BELNR', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
+    { key: 'BEGABRPE', label: 'Début de la période de calcul de facturation', _style: { width: '20%' } },
+    { key: 'ENDABRPE', label: 'Fin de la période de calcul de facturation', _style: { width: '20%' } },
+    { key: 'BELNR', label: 'Numéro document de calcul de facturation', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
   fields5: [
-    { key: 'BUKRS', label: 'Class', _style: { width: '40%' } },
-    { key: 'OUTCNSO', label: 'OUTCNSO', _style: { width: '20%' } },
-    { key: 'VERTRAG', label: 'VERTRAG', _style: { width: '20%' } },
-    { key: 'OPBEL', label: 'OPBEL', _style: { width: '20%' } },
-    { key: 'BUDAT', label: 'BUDAT', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
+    { key: 'OUTCNSO', label: 'Numéro de la mise en attente pour vérification', _style: { width: '20%' } },
+    { key: 'OPBEL', label: 'Numéro document d impression', _style: { width: '20%' } },
+    { key: 'BUDAT', label: 'Date comptable de la pièce', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
   fields6: [
-    { key: 'BUKRS', label: 'Class', _style: { width: '40%' } },
-    { key: 'VERTRAG', label: 'VERTRAG', _style: { width: '20%' } },
-    { key: 'TEXT30', label: 'TEXT30', _style: { width: '20%' } },
-    { key: 'EINZDAT_ALT', label: 'EINZDAT_ALT', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
+    { key: 'TEXT30', label: 'Motif de blocage de calcul de facturation', _style: { width: '20%' } },
+    { key: 'EINZDAT_ALT', label: 'Date emménagement d ancien système', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
   fields7: [
-    { key: 'BUKRS', label: 'Class', _style: { width: '40%' } },
-    { key: 'VERTRAG', label: 'VERTRAG', _style: { width: '20%' } },
-    { key: 'SPARTE', label: 'SPARTE', _style: { width: '20%' } },
-    { key: 'ABLBELNR', label: 'ABLBELNR', _style: { width: '20%' } },
-    { key: 'ERDAT', label: 'ERDAT', _style: { width: '20%' } },
-    { key: 'ABRDATSU', label: 'ABRDATSU', _style: { width: '20%' } },
-    { key: 'ERNAM', label: 'ERNAM', _style: { width: '20%' } },
+    { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
+    { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
+    { key: 'SPARTE', label: 'Secteur activité', _style: { width: '20%' } },
+    { key: 'ABLBELNR', label: 'Numéro identification interne du document de relevé', _style: { width: '20%' } },
+    { key: 'ERDAT', label: 'Date de création de lenregistrement', _style: { width: '20%' } },
+    { key: 'ABRDATSU', label: 'Date calc. de fact. planif. de l ord. de calc. fact. suppr.', _style: { width: '20%' } },
+    { key: 'ERNAM', label: 'Nom de l utilisateur qui a créé l objet', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
 };
 
-const DataTable = ({ kpiData, bapi,startdate,enddate }) => {
+
+const DataTable = ({ kpiData, bapi, startdate, enddate }) => {
+
+
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
+  const [label, setLabel] = useState([]);
+
+  const url = getURL()
+  const token = localStorage.getItem("token");
+
+  const fetchData = async () => {
+    try {
+
+      let response1;
+      let response2;
+
+      // Fetch Kpi1 data
+
+      if (bapi === 'fields2') {
+        response1 = await axios.get(`${url}/Kpis/PieChart?startDate=${startdate}&endDate=${enddate}`, {
+          headers: {
+            authorization: "Bearer " + token,
+          }
+
+        });
+        setCount1(response1.data.count1)
+        setCount2(response1.data.count2)
+        setCount3(response1.data.count3)
+        setLabel(['Contrat Non Facturés', 'Contrat Facturés'])
+      }
+
+      else if (bapi === 'fields3') {
+        response2 = await axios.get(`${url}/Kpis/PieChart3?startDate=${startdate}&endDate=${enddate}`, {
+          headers: {
+            authorization: "Bearer " + token,
+          }
+
+        });
+        setCount1(response2.data.count1)
+        setCount3(response2.data.count2)
+        setLabel(['Contrats', 'Contrat avec des relèves non cycliques '])
+      }
+      console.log(response1.data);
+
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   const itemsPerPage = 50; // Number of items to display per page
   const [currentPage, setCurrentPage] = useState(1);
@@ -92,18 +154,20 @@ const DataTable = ({ kpiData, bapi,startdate,enddate }) => {
   const totalPages = Math.ceil(kpiData.length / itemsPerPage);
 
   // Paginate the data based on the current page
-  const paginatedData = kpiData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, kpiData.length);
+  const paginatedData = kpiData.slice(startIndex, endIndex);
 
   const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
   };
 
 
-  const selectedFields = fieldsConfigurations[bapi] || [];
 
+
+  const selectedFields = fieldsConfigurations[bapi] || [];
 
 
 
@@ -117,23 +181,23 @@ const DataTable = ({ kpiData, bapi,startdate,enddate }) => {
             <CButton color="success">Envoyer Données</CButton>
           </div>
           <div className="mt-4 mb-4 d-flex justify-content-end"> */}
-            <CButton onClick={() => setVisible(!visible)}>Pie Chart</CButton>
-          {/* </div>
+        <CButton onClick={() => { setVisible(!visible); fetchData() }}>Pie Chart</CButton>
+        {/* </div>
         </div> */}
 
         <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
           <CModalHeader>
-            <CModalTitle>Modal title</CModalTitle>
+            <CModalTitle>Graphe de distrubition des contrats</CModalTitle>
           </CModalHeader>
           <CModalBody>
             <CChartPie
               data={{
-                labels: ['Red', 'Green', 'Yellow'],
+                labels: label,
                 datasets: [
                   {
-                    data: [300, 50, 100],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    data: [count3, count1],
+                    backgroundColor: ['#FF6384', '#36A2EB'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB'],
                   },
                 ],
               }}
@@ -143,7 +207,7 @@ const DataTable = ({ kpiData, bapi,startdate,enddate }) => {
             <CButton color="secondary" onClick={() => setVisible(false)}>
               Close
             </CButton>
-            <CButton color="primary">Save changes</CButton>
+            {/* <CButton color="primary">Save changes</CButton> */}
           </CModalFooter>
         </CModal>
       </>
@@ -157,49 +221,83 @@ const DataTable = ({ kpiData, bapi,startdate,enddate }) => {
 
   return (
     <div className="text-center">
-      <h1 style={{ textAlign: 'center' }}>Your Big Title</h1>
-      <div className='mt-4 mb-4 d-flex align-items-between justify-content-between'>
-      <div className=" d-flex justify-content-start">
+      {kpiData.length === 0 ? (<> <h1 className='mt-5' style={{ textAlign: 'center' }}>
+        pas des donneés pour {titles[bapi][0].title} entre {startdate} et {enddate}</h1>
 
-      <Link to={`/forms/MailPage/${startdate}/${enddate}`}>
-            <CButton color="success">Envoyer Données</CButton>
-      </Link>
+
+
+      </>) :
+
+
+        //////////////////////////////
+
+
+        (<> <h1 style={{ textAlign: 'center' }}>{titles[bapi][0].title}</h1>
+          <div className='mt-4 mb-4 d-flex align-items-between justify-content-between'>
+            <div className=" d-flex justify-content-start">
+
+              <Link to={`/forms/MailPage/${startdate}/${enddate}`}>
+                <CButton color="success">Envoyer Données</CButton>
+              </Link>
+
+            </div>
+            {VerticallyCentered()}
           </div>
-         {VerticallyCentered()}
-      </div>
-     
 
-      <CTable hover style={selectedFields === 'fields1' ? { marginLeft: '100px' } : { marginLeft: '25px' }}
-        columnFilter tableFilter itemsPerPageSelect itemsPerPage={5} pagination
-      >
-        <CTableHead>
-          <CTableRow>
-            {selectedFields.map((field, index) => (
-              <CTableHeaderCell key={index} scope="col">
-                {field.label}
-              </CTableHeaderCell>
+
+          <CTable hover style={selectedFields === 'fields1' ? { marginLeft: '100px' } : { marginLeft: '25px' }}
+            columnFilter tableFilter itemsPerPageSelect itemsPerPage={5} pagination
+          >
+            <CTableHead>
+              <CTableRow>
+                {selectedFields.map((field, index) => (
+                  <CTableHeaderCell key={index} scope="col">
+                    {field.label}
+                  </CTableHeaderCell>
+                ))}
+              </CTableRow>
+            </CTableHead>
+
+            <CTableBody>
+              {paginatedData.map((row, rowIndex) => (
+                <CTableRow key={rowIndex}>
+                  {selectedFields ? selectedFields.map((field, fieldIndex) => (
+                    <CTableDataCell key={fieldIndex}>{row[field.key]}</CTableDataCell>
+                  )) : "No data Found in This period !!"}
+                </CTableRow>
+              ))}
+            </CTableBody>
+
+          </CTable>
+          <CPagination align="center" aria-label="Page navigation example">
+            <CPaginationItem
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              Previous
+            </CPaginationItem>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <CPaginationItem
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </CPaginationItem>
             ))}
-          </CTableRow>
-        </CTableHead>
+            <CPaginationItem
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              Next
+            </CPaginationItem>
+          </CPagination>
 
-        <CTableBody>
-          {paginatedData.map((row, rowIndex) => (
-            <CTableRow key={rowIndex}>
-              {selectedFields ? selectedFields.map((field, fieldIndex) => (
-                <CTableDataCell key={fieldIndex}>{row[field.key]}</CTableDataCell>
-              )) : "No data Found in This period !!"}
-            </CTableRow>
-          ))}
-        </CTableBody>
 
-      </CTable>
-      <CPagination align="center" aria-label="Page navigation example" >
-        <CPaginationItem disabled>Previous</CPaginationItem>
-        <CPaginationItem>1</CPaginationItem>
-        <CPaginationItem>2</CPaginationItem>
-        <CPaginationItem>3</CPaginationItem>
-        <CPaginationItem>Next</CPaginationItem>
-      </CPagination>
+
+
+
+        </>)}
     </div>
   );
 };

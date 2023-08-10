@@ -9,7 +9,7 @@ import { UserContext } from 'src'
 const AppContent = () => {
   const { user } = React.useContext(UserContext);
   const [loading, setLoading] = useState(true);
-  console.log(user.username)
+ // console.log(user.username)
   
   return (
     <CContainer lg>

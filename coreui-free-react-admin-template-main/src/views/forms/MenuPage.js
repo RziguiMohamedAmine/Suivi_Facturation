@@ -123,36 +123,36 @@ const MenuPage = () => { // const url = "https://nextec-back.vercel.app/";
         <div> {
             !dataFetched ? (
               <div>
-                <h1 style={{ textAlign: 'start' }}>Your Big Title</h1>
+                <h1 style={{ textAlign: 'start' }}>Suivi Facturation</h1>
                 <CForm className="row g-3"
                     onSubmit={handleSubmit}>
                     <CCol md={7}>
-                        <CFormLabel htmlFor="startdate">Start Date</CFormLabel>
+                        <CFormLabel htmlFor="startdate">Date de Début</CFormLabel>
                         <CFormInput type="date"
                             value={startDate}                
                             id="startdate"
                             onChange={handleStartDateChange}/>
                     </CCol>
                     <CCol md={7}>
-                        <CFormLabel htmlFor="enddate">end Date</CFormLabel>
+                        <CFormLabel htmlFor="enddate">Date de Fin</CFormLabel>
                         <CFormInput type="date" id="enddate"
                             value={endDate}
                             onChange={handleEndDateChange}/>
                     </CCol>
                     <CCol xs={12}>
-                        <CFormLabel htmlFor="inputAddress2">Choose option</CFormLabel>
+                        <CFormLabel htmlFor="inputAddress2">Choisir option</CFormLabel>
                         <CFormSelect id="inputGroupSelect04" aria-label="Example select with button addon"
                             value={bapi}
                             onChange={handleBapiChange}>
                             {/* <option>Choose...</option> */}
-                            <option value='choose'>Choose..</option>
-                            <option value='fields1'>fields1</option>
-                            <option value='fields2'>fields2</option>
-                            <option value='fields3'>fields3</option>
-                            <option value='fields4'>fields4</option>
-                            <option value='fields5'>fields5</option>
-                            <option value='fields6'>fields6</option>
-                            <option value='fields7'>fields7</option>                          
+                            <option value='choose'>Choisir...</option>
+                            <option value='fields1'>Contrats attendus pour la facturation </option>
+                            <option value='fields2'>Contrats déjà facturés </option>
+                            <option value='fields3'>Contrats facturés avec relèves non cycliques </option>
+                            <option value='fields4'>Contrats avec document de calcul de facturation sans facture </option>
+                            <option value='fields5'>Contrats ayant des factures bloquées</option>
+                            <option value='fields6'>Contrats bloqués pour le calcul facturation </option>
+                            <option value='fields7'>Contrats ayant des OCF avec des relèves déjà saisies</option>                          
                         </CFormSelect>
                     </CCol>
                     <CCol xs={12}>

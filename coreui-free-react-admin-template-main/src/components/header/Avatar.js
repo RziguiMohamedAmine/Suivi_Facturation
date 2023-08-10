@@ -1,11 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from 'src';
 
 const Avatar = () => {
     const { user } = React.useContext(UserContext);
   // Get the first letter of the username (assuming the username is not empty)
-  const firstLetter = user.firstName.charAt(0).toUpperCase();
-
+  const firstLetter =  ''   //user.lastName.charAt(0).toUpperCase();
+ 
   // CSS styles for the circular avatar
   const avatarStyle = {
     width: '40px',

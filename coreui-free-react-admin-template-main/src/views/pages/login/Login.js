@@ -74,8 +74,8 @@ const Login = () => {
               <CCard className="p-4">
                 <CCardBody>
                   <CForm onSubmit={SignIn} style={{ marginTop: '20px' }}>
-                    <h1>Login</h1>
-                    <p className="text-medium-emphasis">Sign In to your account</p>
+                    <h1>Se Connecter</h1>
+                    <p className="text-medium-emphasis">Connecter à votre compte</p>
 
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -123,7 +123,7 @@ const Login = () => {
                     </div>
                     <CCol xs={6}>
                         <CButton color="primary" type='submit' className="px-4">
-                          Login
+                          Connexion
                         </CButton>
                       </CCol>
                       {/* <CCol xs={6} className="text-right">
@@ -139,10 +139,10 @@ const Login = () => {
                 <CCardBody className="text-center mb-3">
                   <div>
                   <img src={logo} alt="Logo" style={{ width: '120px', marginBottom: '20px' }} />
-                    <h2>Sign up</h2>                                   
+                    <h2>S&apos;inscrire</h2>                                   
                     <Link to="/register">
                       <CButton color="primary" className="mt-3" active tabIndex={-1}>
-                        Register Now!
+                      S&apos;inscrire
                       </CButton>
                     </Link>
                   </div>

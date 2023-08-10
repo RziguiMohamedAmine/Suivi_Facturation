@@ -95,7 +95,7 @@ const MailPage = () => {
                                 <rect width="100%" height="100%" fill="#007aff"></rect>
                               </svg>
                               <div className="fw-bold me-auto">ILIADE</div>
-                              <small>7 min ago</small>
+                              <small>1 min ago</small>
                             </CToastHeader>
                             <CToastBody>{res.data} </CToastBody>
                           </CToast>)
