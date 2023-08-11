@@ -14,14 +14,14 @@ import {
   CModalTitle,
   CModalBody,
   CModalFooter,
+  CFormInput,
 } from '@coreui/react'
-import { PropTypes } from 'prop-types';
+import { PropTypes } from 'prop-types'
 
-import { CChartPie } from '@coreui/react-chartjs';
-import { Link } from 'react-router-dom';
-import { getURL } from 'src/utils/getURL';
-import axios from 'axios';
-
+import { CChartPie } from '@coreui/react-chartjs'
+import { Link } from 'react-router-dom'
+import { getURL } from 'src/utils/getURL'
+import axios from 'axios'
 
 const titles = {
   fields1: [{ title: 'Contrats attendus pour la facturation' }],
@@ -64,15 +64,27 @@ const fieldsConfigurations = {
   fields4: [
     { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
     { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
-    { key: 'BEGABRPE', label: 'Début de la période de calcul de facturation', _style: { width: '20%' } },
-    { key: 'ENDABRPE', label: 'Fin de la période de calcul de facturation', _style: { width: '20%' } },
+    {
+      key: 'BEGABRPE',
+      label: 'Début de la période de calcul de facturation',
+      _style: { width: '20%' },
+    },
+    {
+      key: 'ENDABRPE',
+      label: 'Fin de la période de calcul de facturation',
+      _style: { width: '20%' },
+    },
     { key: 'BELNR', label: 'Numéro document de calcul de facturation', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
   fields5: [
     { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
     { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
-    { key: 'OUTCNSO', label: 'Numéro de la mise en attente pour vérification', _style: { width: '20%' } },
+    {
+      key: 'OUTCNSO',
+      label: 'Numéro de la mise en attente pour vérification',
+      _style: { width: '20%' },
+    },
     { key: 'OPBEL', label: 'Numéro document d impression', _style: { width: '20%' } },
     { key: 'BUDAT', label: 'Date comptable de la pièce', _style: { width: '20%' } },
     // Add more fields as needed based on your data
@@ -88,100 +100,113 @@ const fieldsConfigurations = {
     { key: 'VERTRAG', label: 'Contrat', _style: { width: '20%' } },
     { key: 'BUKRS', label: 'Société', _style: { width: '40%' } },
     { key: 'SPARTE', label: 'Secteur activité', _style: { width: '20%' } },
-    { key: 'ABLBELNR', label: 'Numéro identification interne du document de relevé', _style: { width: '20%' } },
+    {
+      key: 'ABLBELNR',
+      label: 'Numéro identification interne du document de relevé',
+      _style: { width: '20%' },
+    },
     { key: 'ERDAT', label: 'Date de création de lenregistrement', _style: { width: '20%' } },
-    { key: 'ABRDATSU', label: 'Date calc. de fact. planif. de l ord. de calc. fact. suppr.', _style: { width: '20%' } },
+    {
+      key: 'ABRDATSU',
+      label: 'Date calc. de fact. planif. de l ord. de calc. fact. suppr.',
+      _style: { width: '20%' },
+    },
     { key: 'ERNAM', label: 'Nom de l utilisateur qui a créé l objet', _style: { width: '20%' } },
     // Add more fields as needed based on your data
   ],
-};
-
+}
 
 const DataTable = ({ kpiData, bapi, startdate, enddate }) => {
-
-
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [count3, setCount3] = useState(0);
-  const [label, setLabel] = useState([]);
+  const [count1, setCount1] = useState(0)
+  const [count2, setCount2] = useState(0)
+  const [count3, setCount3] = useState(0)
+  const [label, setLabel] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   const url = getURL()
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token')
 
   const fetchData = async () => {
     try {
-
-      let response1;
-      let response2;
+      let response1
+      let response2
 
       // Fetch Kpi1 data
 
       if (bapi === 'fields2') {
-        response1 = await axios.get(`${url}/Kpis/PieChart?startDate=${startdate}&endDate=${enddate}`, {
-          headers: {
-            authorization: "Bearer " + token,
-          }
-
-        });
+        response1 = await axios.get(
+          `${url}/Kpis/PieChart?startDate=${startdate}&endDate=${enddate}`,
+          {
+            headers: {
+              authorization: 'Bearer ' + token,
+            },
+          },
+        )
         setCount1(response1.data.count1)
         setCount2(response1.data.count2)
         setCount3(response1.data.count3)
         setLabel(['Contrat Non Facturés', 'Contrat Facturés'])
-      }
-
-      else if (bapi === 'fields3') {
-        response2 = await axios.get(`${url}/Kpis/PieChart3?startDate=${startdate}&endDate=${enddate}`, {
-          headers: {
-            authorization: "Bearer " + token,
-          }
-
-        });
+      } else if (bapi === 'fields3') {
+        response2 = await axios.get(
+          `${url}/Kpis/PieChart3?startDate=${startdate}&endDate=${enddate}`,
+          {
+            headers: {
+              authorization: 'Bearer ' + token,
+            },
+          },
+        )
         setCount1(response2.data.count1)
         setCount3(response2.data.count2)
         setLabel(['Contrats', 'Contrat avec des relèves non cycliques '])
       }
-      console.log(response1.data);
-
-
+      console.log(response1.data)
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching data:', error)
     }
-  };
+  }
 
-  const itemsPerPage = 50; // Number of items to display per page
-  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50 // Number of items to display per page
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const totalPages = Math.ceil(kpiData.length / itemsPerPage);
+  const totalPages = Math.ceil(kpiData.length / itemsPerPage)
 
   // Paginate the data based on the current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, kpiData.length);
-  const paginatedData = kpiData.slice(startIndex, endIndex);
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = Math.min(startIndex + itemsPerPage, kpiData.length)
+
+  const filteredData = kpiData.filter((row) =>
+  row.VERTRAG.includes(searchTerm)
+  );
+
+const paginatedData = filteredData.slice(startIndex, endIndex);
+
+//  const paginatedData = kpiData.slice(startIndex, endIndex)
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
-      setCurrentPage(newPage);
+      setCurrentPage(newPage)
     }
-  };
+  }
 
-
-
-
-  const selectedFields = fieldsConfigurations[bapi] || [];
-
-
+  const selectedFields = fieldsConfigurations[bapi] || []
 
   const VerticallyCentered = () => {
     const [visible, setVisible] = useState(false)
     return (
       <>
-
         {/* <div className='d-flex align-items-between justify-content-between'>
           <div className="mt-4 mb-4 d-flex justify-content-start">
             <CButton color="success">Envoyer Données</CButton>
           </div>
           <div className="mt-4 mb-4 d-flex justify-content-end"> */}
-        <CButton onClick={() => { setVisible(!visible); fetchData() }}>Pie Chart</CButton>
+        <CButton
+          onClick={() => {
+            setVisible(!visible)
+            fetchData()
+          }}
+        >
+          Pie Chart
+        </CButton>
         {/* </div>
         </div> */}
 
@@ -214,39 +239,46 @@ const DataTable = ({ kpiData, bapi, startdate, enddate }) => {
     )
   }
 
-
-
-
-
-
   return (
     <div className="text-center">
-      {kpiData.length === 0 ? (<> <h1 className='mt-5' style={{ textAlign: 'center' }}>
-        pas des donneés pour {titles[bapi][0].title} entre {startdate} et {enddate}</h1>
-
-
-
-      </>) :
-
-
+      {kpiData.length === 0 ? (
+        <>
+          {' '}
+          <h1 className="mt-5" style={{ textAlign: 'center' }}>
+            pas des donneés pour {titles[bapi][0].title} entre {startdate} et {enddate}
+          </h1>
+        </>
+      ) : (
         //////////////////////////////
 
-
-        (<> <h1 style={{ textAlign: 'center' }}>{titles[bapi][0].title}</h1>
-          <div className='mt-4 mb-4 d-flex align-items-between justify-content-between'>
+        <>
+          {' '}
+          <h1 style={{ textAlign: 'center' }}>{titles[bapi][0].title}</h1>
+          <CFormInput
+                className="mt-4 mb-4 d-flex justify-content-start"
+                style={{ width: '200px', marginRight: '10px' }}
+                type="text"
+                placeholder="Contrat"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+          <div className="mt-4 mb-4 d-flex align-items-between justify-content-between">
             <div className=" d-flex justify-content-start">
-
               <Link to={`/forms/MailPage/${startdate}/${enddate}`}>
                 <CButton color="success">Envoyer Données</CButton>
               </Link>
-
+              
             </div>
             {VerticallyCentered()}
           </div>
-
-
-          <CTable hover style={selectedFields === 'fields1' ? { marginLeft: '100px' } : { marginLeft: '25px' }}
-            columnFilter tableFilter itemsPerPageSelect itemsPerPage={5} pagination
+          <CTable
+            hover
+            style={selectedFields === 'fields1' ? { marginLeft: '100px' } : { marginLeft: '25px' }}
+            columnFilter
+            tableFilter
+            itemsPerPageSelect
+            itemsPerPage={5}
+            pagination
           >
             <CTableHead>
               <CTableRow>
@@ -261,13 +293,14 @@ const DataTable = ({ kpiData, bapi, startdate, enddate }) => {
             <CTableBody>
               {paginatedData.map((row, rowIndex) => (
                 <CTableRow key={rowIndex}>
-                  {selectedFields ? selectedFields.map((field, fieldIndex) => (
-                    <CTableDataCell key={fieldIndex}>{row[field.key]}</CTableDataCell>
-                  )) : "No data Found in This period !!"}
+                  {selectedFields
+                    ? selectedFields.map((field, fieldIndex) => (
+                        <CTableDataCell key={fieldIndex}>{row[field.key]}</CTableDataCell>
+                      ))
+                    : 'No data Found in This period !!'}
                 </CTableRow>
               ))}
             </CTableBody>
-
           </CTable>
           <CPagination align="center" aria-label="Page navigation example">
             <CPaginationItem
@@ -292,15 +325,11 @@ const DataTable = ({ kpiData, bapi, startdate, enddate }) => {
               Next
             </CPaginationItem>
           </CPagination>
-
-
-
-
-
-        </>)}
+        </>
+      )}
     </div>
-  );
-};
+  )
+}
 
 DataTable.propTypes = {
   kpiData: PropTypes.arrayOf(
@@ -310,11 +339,11 @@ DataTable.propTypes = {
       VBEZ: PropTypes.string.isRequired,
       VBEGINN: PropTypes.string.isRequired,
       VENDE: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
   bapi: PropTypes.oneOf(Object.keys(fieldsConfigurations)).isRequired,
   startdate: PropTypes.string.isRequired, // Add prop type validation for startDate
   enddate: PropTypes.string.isRequired,
-};
+}
 
-export default DataTable;
+export default DataTable
